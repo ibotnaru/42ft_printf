@@ -6,7 +6,7 @@
 /*   By: ibotnaru <ibotnaru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 13:43:35 by ibotnaru          #+#    #+#             */
-/*   Updated: 2019/06/27 22:55:02 by ibotnaru         ###   ########.fr       */
+/*   Updated: 2019/07/11 21:18:06 by ibotnaru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ int				main(void)
 
 //     //	 checking the o_format   проверено на лики
 
-//     int		x = 42;
+     int		x = 42;
 //   	int		z = -42;
 
 //   	ft_printf("o: |%o|\n", x);
@@ -261,7 +261,7 @@ int				main(void)
 
 
 //   	// checking the d_format   проверено на лики
-
+/*
 int		x = 42;
 int		z = -42;
 
@@ -277,8 +277,8 @@ int		z = -42;
 	ft_printf("%0+5d", -42);
 	ft_printf("|%-05d|\n", 42);
 	ft_printf("|%-05d|\n", -42);
-
-
+*/
+	printf("Pretty Inna's version\n");
 	ft_printf("d: |%d|\n", x);
 	ft_printf("d: |%+d|\n", x);
 	ft_printf("d: |%-d|\n", x);
@@ -292,6 +292,19 @@ int		z = -42;
 	ft_printf("d: |% 10.5d|\n", x);
 	ft_printf("d: |%+10.5d|\n", x);
 
+	printf("bloody computer version\n");
+	printf("d: |%d|\n", x);
+	printf("d: |%+d|\n", x);
+	printf("d: |%-d|\n", x);
+	printf("d: |% d|\n", x);
+	printf("d: |%0d|\n", x);
+	printf("\nd: |%10d|\n", x);
+	printf("d: |%.5d|\n", x);
+	printf("d: |%10.5d|\n", x);
+	printf("\nd: |%+10.5d|\n", x);
+	printf("d: |%-10.5d|\n", x);
+	printf("d: |% 10.5d|\n", x);
+	printf("d: |%+10.5d|\n", x);
 // 	//  negative number
 
 // 	ft_printf("\nd: |%d|\n", z);
@@ -306,7 +319,6 @@ int		z = -42;
 // 	ft_printf("d: |%-10.5d|\n", z);
 // 	ft_printf("d: |% 10.5d|\n", z);
 // 	ft_printf("d: |%+10.5d|\n", z);
-// 
-	
+
 	return (0);
 }
