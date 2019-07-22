@@ -6,7 +6,7 @@
 /*   By: ibotnaru <ibotnaru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 16:16:24 by ibotnaru          #+#    #+#             */
-/*   Updated: 2019/07/01 19:54:42 by ibotnaru         ###   ########.fr       */
+/*   Updated: 2019/07/15 22:17:31 by ibotnaru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define OCTET 8
+# define HEX 16
 
 typedef struct		s_list
 {
@@ -32,6 +35,7 @@ void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t				ft_strlen(const char *s);
+char				*ft_strrev(char *str);
 char				*ft_strdup(const char *s1);
 char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
@@ -53,6 +57,9 @@ int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
+int					ft_power(int nb, int pow);
+long				ft_long_power(long num, long pow);
+long				ft_numlen(long num, long base);
 
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
@@ -67,11 +74,13 @@ int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
-char				*ft_strjoin_free(char const *s1, char const *s2, int indx);
+char				*ft_strjoin_free(void *s1, void *s2, int indx);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);
+char				*ft_itoa_negative(int num);
 char				*ft_itoa_long(long long number);
+char				*ft_itoa_base(int num, int base, int uppercase);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);

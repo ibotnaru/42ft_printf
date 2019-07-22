@@ -5,18 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibotnaru <ibotnaru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/02 18:36:16 by ibotnaru          #+#    #+#             */
-/*   Updated: 2019/07/02 18:37:33 by ibotnaru         ###   ########.fr       */
+/*   Created: 2019/07/19 13:48:41 by ibotnaru          #+#    #+#             */
+/*   Updated: 2019/07/19 13:49:43 by ibotnaru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"ft_printf.h"
 
-void	get_and_store_flags_l_ll(const char *format, t_flags *all_flags)
+void	get_and_store_flags_l_ll(const char *format, t_flags *all_flags, int i)
 {
-	int		i;
-
-	i = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
@@ -48,11 +45,8 @@ void	get_and_store_flags_l_ll(const char *format, t_flags *all_flags)
 	}
 }
 
-void	get_and_store_flags_h_hh(const char *format, t_flags *all_flags)
+void	get_and_store_flags_h_hh(const char *format, t_flags *all_flags, int i)
 {
-	int		i;
-
-	i = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')

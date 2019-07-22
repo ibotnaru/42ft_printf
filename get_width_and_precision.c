@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_flags2.c                                       :+:      :+:    :+:   */
+/*   get_width_and_precision.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibotnaru <ibotnaru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/02 18:34:11 by ibotnaru          #+#    #+#             */
-/*   Updated: 2019/07/02 18:34:56 by ibotnaru         ###   ########.fr       */
+/*   Created: 2019/07/19 12:24:52 by ibotnaru          #+#    #+#             */
+/*   Updated: 2019/07/21 15:50:32 by ibotnaru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"ft_printf.h"
 
-void	get_and_store_width(const char *format, t_flags *all_flags)
+void	get_and_store_width(const char *format, t_flags *all_flags, int i)
 {
-	int		i;
 	int		width_value;
 
-	i = 0;
 	width_value = 0;
 	while(format[i])
 	{
 		if(format[i] == '%')
 		{
 			i++;
-			if (format[i] == '-' || format[i] == '#' || format[i] == '0' ||
+			if (format[i] > '0' && format[i] <= '9')
+			{
+				width_value = ft_atoi(&format[i]);
+				all_flags->width_flag = 1;
+				break ;
+			}
+			while (format[i] == '-' || format[i] == '#' || format[i] == '0' ||
 				format[i] == '+' || format[i] == ' ')
 				i++;
 			if (format[i] >= '0' && format[i] <= '9')
@@ -39,14 +43,10 @@ void	get_and_store_width(const char *format, t_flags *all_flags)
 	all_flags->width_size = width_value;
 }
 
-//parsing. This function just takes and stores the taken value in structure
-void	get_and_store_precision(const char *format, t_flags *all_flags)
+void	get_and_store_precision(const char *format, t_flags *all_flags, int i)
 {
-	int		i;
 	int		precision_value;
 
-	precision_value  = 0;
-	i = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
