@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_long.c                                      :+:      :+:    :+:   */
+/*   ft_itoa_unsigned_long.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibotnaru <ibotnaru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/17 17:03:58 by ibotnaru          #+#    #+#             */
-/*   Updated: 2019/06/17 17:03:58 by ibotnaru         ###   ########.fr       */
+/*   Created: 2019/07/23 14:40:29 by ibotnaru          #+#    #+#             */
+/*   Updated: 2019/07/23 19:36:02 by ibotnaru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static int	ft_len_long(int64_t n)
+static int	ft_len_unsigned_long(uint64_t n)
 {
 	int		nbrc;
 	int		len;
@@ -27,23 +27,15 @@ static int	ft_len_long(int64_t n)
 	return (len);
 }
 
-char		*ft_itoa_long(int64_t n)
+char		*ft_itoa_unsigned_long(uint64_t n)
 {
-	int		sign;
 	int		len;
 	char	*str;
 
-	len = (n < 0 ? 1 : 0) + ft_len_long(n);
-	sign = n < 0 ? -1 : 1;
+	len = ft_len_unsigned_long(n);
 	if (!(str = malloc(sizeof(char*) * (len + 1))))
 		return (NULL);
 	str[len] = '\0';
-		if (n == -2147483648)
-	{
-		n = -214748364;
-		str[--len] = '8';
-	}
-	n = (n < 0) ? -n : n;
 	if (n == 0)
 		str[0] = '0';
 	while (n != 0)
@@ -51,8 +43,5 @@ char		*ft_itoa_long(int64_t n)
 		str[len-- - 1] = n % 10 + '0';
 		n = n / 10;
 	}
-	if (sign < 0)
-		str[len - 1] = '-';
 	return (str);
 }
-

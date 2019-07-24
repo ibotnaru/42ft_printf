@@ -6,7 +6,7 @@
 /*   By: ibotnaru <ibotnaru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:24:52 by ibotnaru          #+#    #+#             */
-/*   Updated: 2019/07/21 15:50:32 by ibotnaru         ###   ########.fr       */
+/*   Updated: 2019/07/22 18:25:57 by ibotnaru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	get_and_store_precision(const char *format, t_flags *all_flags, int i)
 {
 	int		precision_value;
 
+	i = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')

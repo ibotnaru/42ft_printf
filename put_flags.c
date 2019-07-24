@@ -6,7 +6,7 @@
 /*   By: ibotnaru <ibotnaru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 12:21:34 by ibotnaru          #+#    #+#             */
-/*   Updated: 2019/07/19 12:22:27 by ibotnaru         ###   ########.fr       */
+/*   Updated: 2019/07/22 19:49:34 by ibotnaru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char    *put_zeroes(int len_flag, int len_strnum)
         return (zeroes_buf);    
     }
     else
-        return (NULL);
+        return (""); //??
 }
 
 char    *put_spaces(int len_flag, int len_strnum)
@@ -57,5 +57,5 @@ char    *put_spaces(int len_flag, int len_strnum)
         return (spaces_buf);
     }
     else
-        return (NULL);
+        return (""); //??
 }

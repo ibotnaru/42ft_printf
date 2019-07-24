@@ -6,7 +6,7 @@
 /*   By: ibotnaru <ibotnaru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 16:16:24 by ibotnaru          #+#    #+#             */
-/*   Updated: 2019/07/15 22:17:31 by ibotnaru         ###   ########.fr       */
+/*   Updated: 2019/07/23 14:42:59 by ibotnaru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,8 @@ int					ft_my_maxnum(int *arr, int len);
 int					ft_my_minnum(int *arr, int len);
 int					ft_my_whspaces(char c);
 int					ft_my_intlen(int num);
+char				*ft_itoa_long(int64_t n);
+char				*ft_itoa_unsigned_long(uint64_t n);
+
 
 #endif

@@ -5,56 +5,99 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibotnaru <ibotnaru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/02 17:17:33 by ibotnaru          #+#    #+#             */
-/*   Updated: 2019/07/14 20:11:26 by ibotnaru         ###   ########.fr       */
+/*   Created: 2019/07/23 17:57:35 by ibotnaru          #+#    #+#             */
+/*   Updated: 2019/07/23 19:35:17 by ibotnaru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-//this file is in progress
-
-unsigned int        get_u_number(ap, all_flags)     //?
+char    *width_on_prec_on_u(t_flags *all_flags, char *str_num)
 {
+    char    *buffer;
+    int     num_len;
+    int     buf_len;
 
+    num_len = ft_strlen(str_num);
+    if (all_flags->precision_size > num_len)
+        buffer = ft_strjoin(put_zeroes(all_flags->precision_size, num_len), str_num);
+    else
+        buffer = ft_strdup(str_num);
+    buf_len = ft_strlen(buffer);
+    if (all_flags->width_size > buf_len)
+    {
+        if (all_flags->minus_flag == 1)
+            buffer = ft_strjoin_free(buffer, put_spaces(all_flags->width_size, buf_len), 1);
+        else
+            buffer = ft_strjoin_free(put_spaces(all_flags->width_size, buf_len), buffer, 2);
+    }
+    else
+        buffer = ft_strdup(buffer); //leaks
+    return (buffer);
 }
 
-char                *return_buffer_u(va_list ap, t_flags *all_flags)
+char    *width_on_prec_off_u(t_flags *all_flags, char *str_num)
+{
+    char    *buffer;
+    int     num_len;
+
+    num_len = ft_strlen(str_num);
+    if (all_flags->width_size > num_len)
+    {
+        if (all_flags->zero_flag == 1)
+        {
+            buffer = ft_strjoin(put_zeroes(all_flags->width_size, num_len), str_num);
+            return (buffer);
+        }
+        if (all_flags->minus_flag == 1)
+            buffer = ft_strjoin(str_num, put_spaces(all_flags->width_size, num_len));
+        else
+            buffer = ft_strjoin(put_spaces(all_flags->width_size, num_len), str_num);
+    }
+    else
+        buffer = ft_strdup(str_num);
+    return (buffer);
+}
+
+char    *width_off_prec_on_u(t_flags *all_flags, char *str_num)
+{
+    char    *buffer;
+    int     num_len;
+
+    num_len = ft_strlen(str_num);
+    if (all_flags->precision_size > num_len)
+        buffer = ft_strjoin(put_zeroes(all_flags->precision_size, num_len), str_num);
+    else
+        buffer = ft_strdup(str_num);
+    return(buffer);
+}
+
+char    *print_u(t_flags *all_flags, uint64_t number)
+{
+    char    *str_num;
+    char    *buffer;
+    int     num_len;
+
+    str_num = ft_itoa_unsigned_long(number);
+    num_len = ft_strlen(str_num);
+    if (all_flags->width_flag == 0 && all_flags->precision_flag == 0)
+        buffer = ft_strdup(str_num);
+    else if (all_flags->width_flag == 0 && all_flags->precision_flag == 1)
+        buffer = width_off_prec_on_u(all_flags, str_num);
+    else if (all_flags->width_flag == 1 && all_flags->precision_flag == 0)
+        buffer = width_on_prec_off_u(all_flags, str_num);
+    else    //width == 1 prec == 1
+       buffer = width_on_prec_on_u(all_flags, str_num);
+    return (buffer);
+}
+
+char    *return_buffer_u(va_list ap, t_flags *all_flags)
 {
     char            *buffer;
-    char            *str_num;
-    unsigned int    number;                         //?
+    char		    *str_num;
+	uint64_t		number;
 
-    number = get_u_number(ap, all_flags);
-    if (number >= 0)                                //?       
-    {
-        str_num = ft_itoa(number);                  //?
-        if (((all_flags->width_flag == 0 && all_flags->precision_flag == 1)
-            && (all_flags->precision_size > ft_strlen(str_num)))
-            || ((all_flags->width_flag == 1 && all_flags->precision_flag == 1)
-            && (all_flags->width_size > all_flags->precision_size)
-            && (all_flags->precision_size > ft_strlen(str_num && all_flags->width_size > ft_strlen(str_num)))))
-            buffer = ft_strjoin(put_zeroes_precision(all_flags, ft_strlen(str_num)), str_num);
-        else if ((all_flags->width_flag == 1 && all_flags->precision_flag == 1)
-            && (all_flags->width_size > ft_strlen(str_num) && all_flags->precision_size > ft_strlen(str_num))
-            && (all_flags->precision_size < all_flags->width_size))
-        {
-            buffer = ft_strjoin(put_zeroes_precision(all_flags, ft_strlen(str_num)), str_num);
-            if (all_flags->minus_flag == 1)
-                buffer = ft_strjoin_free(buffer, put_spaces_width(all_flags, ft_strlen(buffer)), 1);
-            else
-                buffer = ft_strjoin_free(put_spaces_width(all_flags, ft_strlen(buffer)), buffer, 2);
-        }
-        else if ((all_flags->width_flag == 1 && all_flags->precision_flag == 0)
-            && (all_flags->width_size > ft_strlen(str_num)))
-        {
-            if (all_flags->minus_flag == 1)
-                buffer = ft_strjoin(put_spaces_width(all_flags, ft_strlen(str_num)), str_num);
-            else
-                buffer = ft_strjoin(str_num, put_spaces_width(all_flags, ft_strlen(str_num)));
-        }
-        else
-            buffer = ft_strdup(str_num);
-    }
+	number = get_u_number(ap, all_flags);
+    buffer = print_u(all_flags, number);
     return (buffer);
 }

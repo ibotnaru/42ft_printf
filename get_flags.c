@@ -6,7 +6,7 @@
 /*   By: ibotnaru <ibotnaru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 18:32:52 by ibotnaru          #+#    #+#             */
-/*   Updated: 2019/07/21 16:02:50 by ibotnaru         ###   ########.fr       */
+/*   Updated: 2019/07/22 18:01:44 by ibotnaru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,20 @@ void	get_and_store_flag_zero(const char *format, t_flags *all_flags, int i)
 	int		flag_on;
 
 	flag_on = 0;
-	while (format[i] != all_flags->specifier)
+	while (format[i] != all_flags->specifier && format[i])
 	{
 		if (format[i] == '%')
 		{
 			i++;
 			while (format[i] != all_flags->specifier)
 			{
-				if (format[i] == '0')
+				if (format[i] == '0' && !(format[i - 1] > '0'  && format[i - 1] <= '9'))
 				{
 					flag_on = 1;
 					break;
 				}
 				else
-					break ;
+					//break ;
 				i++;
 			}
 		}
@@ -83,7 +83,7 @@ void	get_and_store_flag_minus(const char *format, t_flags *all_flags, int i)
 					break;
 				}
 				else
-					break ;
+					//break ;
 				i++;
 			}
 		}
@@ -111,7 +111,7 @@ void	get_and_store_flag_plus(const char *format, t_flags *all_flags, int i)
 					break;
 				}
 				else
-					break ;
+					//break ;
 				i++;
 			}
 		}
@@ -139,7 +139,7 @@ void	get_and_store_flag_space(const char *format, t_flags *all_flags, int i)
 					break;
 				}
 				else
-					break ;
+					//break ;
 				i++;
 			}
 		}

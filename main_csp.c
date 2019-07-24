@@ -6,13 +6,13 @@
 /*   By: ibotnaru <ibotnaru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 17:44:27 by ibotnaru          #+#    #+#             */
-/*   Updated: 2019/07/22 00:33:11 by ibotnaru         ###   ########.fr       */
+/*   Updated: 2019/07/22 09:53:18 by ibotnaru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
-
+/*
 int main (void)
 {
 
@@ -94,3 +94,4 @@ int main (void)
 
     return (0);
 }
+*/

@@ -6,7 +6,7 @@
 /*   By: ibotnaru <ibotnaru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 17:57:02 by ibotnaru          #+#    #+#             */
-/*   Updated: 2019/07/22 00:33:44 by ibotnaru         ###   ########.fr       */
+/*   Updated: 2019/07/23 19:37:22 by ibotnaru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,16 @@ char	*put_buffer(va_list ap, t_flags *all_flags)
 		return (buffer = return_buffer_c(ap, all_flags));
 	else if (all_flags->specifier == 's')
 		return (buffer = return_buffer_s(ap, all_flags));
-	 //if (all_flags->specifier == 'd' || all_flags->specifier == 'i')
-		 //return (buffer = return_buffer_d(ap, all_flags));
+	else if (all_flags->specifier == 'd' || all_flags->specifier == 'i')
+		return (buffer = return_buffer_d(ap, all_flags));
 	else if (all_flags->specifier == 'o')
 		return (buffer = return_buffer_o1(ap, all_flags));
 	else if (all_flags->specifier == 'x')
 		return (buffer = return_buffer_x1(ap, all_flags));
 	else if (all_flags->specifier == 'X')
 		return (buffer = return_buffer_X1(ap, all_flags));
-	//else if (all_flags->specifier == 'u')
-		//return (buffer = return_buffer_u(ap, all_flags));
+	else if (all_flags->specifier == 'u')
+		return (buffer = return_buffer_u(ap, all_flags));
 	else if (all_flags->specifier == 'p')
 		return (buffer = return_buffer_p(ap, all_flags));
     else
